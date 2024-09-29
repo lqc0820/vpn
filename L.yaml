@@ -158,7 +158,7 @@ proxy-providers:
     path: './proxy_providers/Cm2.yaml'
     override:
       additional-prefix: "[CM] "
-      
+
   CM3:
     url: 'https://VMess.fxxk.dedyn.io/auto'
     <<: *NodeParam
@@ -198,19 +198,21 @@ CsTest: &CslTest {type: select, interval: 300, lazy: true, url: 'https://www.gst
 
 # 策略组
 proxy-groups: 
-  - {name: 🚀选择节点, type: select, proxies: [♻️自动选择, 🌏️全球联网, 🚀机场 一, 🚀机场 二, 🚀机场 三, 🚀机场 四, 🚀机场 五, 🚀机场 六, 🚀机场 七, 🚀机场 八, 🚀机场 九, 🚀机场 十], icon: ''}
+  - {name: 🚀选择节点, type: select, proxies: [♻️自动选择, 🌏️全球联网, 🚀机场 一, 🚀机场 二, 🚀机场 三, 🚀机场 四, 🚀机场 五, 🚀机场 六, 🚀机场 七, 🚀机场 八, 🚀机场 九, 🚀机场 CM1, 🚀机场 CM2, 🚀机场 CM3], icon: ''}
   - {name: 🌏️全球联网, type: select, include-all-providers: true, filter: *FilterAll, interval: 300, url: 'https://www.gstatic.com/generate_204', icon: ''}
   - {name: ♻️自动选择, type: url-test, interval: 300, url: 'https://www.gstatic.com/generate_204', include-all-providers: true, filter: *FilterAll, icon: ''}
-  - {name: 🚀机场 一, type: select, use: [机场1], filter: "(?i)^(?!unavailable).*$", icon: ''}
-  - {name: 🚀机场 二, type: select, use: [机场2], filter: "(?i)^(?!unavailable).*$", icon: ''}
-  - {name: 🚀机场 三, type: select, use: [CM1, CM2, CM3], filter: "(?i)^(?!unavailable).*$", icon: ''}
-  - {name: 🚀机场 四, type: select, use: [机场3], filter: "(?i)^(?!unavailable).*$", icon: ''}
-  - {name: 🚀机场 五, type: select, use: [机场4], filter: "(?i)^(?!unavailable).*$", icon: ''} 
-  - {name: 🚀机场 六, type: select, use: [机场5], filter: "(?i)^(?!unavailable).*$", icon: ''}
-  - {name: 🚀机场 七, type: select, use: [机场6], filter: "(?i)^(?!unavailable).*$", icon: ''}
-  - {name: 🚀机场 八, type: select, use: [机场7], filter: "(?i)^(?!unavailable).*$", icon: ''}
-  - {name: 🚀机场 九, type: select, use: [机场8], filter: "(?i)^(?!unavailable).*$", icon: ''}
-  - {name: 🚀机场 十, type: select, use: [机场9], filter: "(?i)^(?!unavailable).*$", icon: ''}
+  - {name: 🚀机场 一, type: select, use: [机场1], icon: ''}
+  - {name: 🚀机场 二, type: select, use: [机场2], icon: ''}
+  - {name: 🚀机场 三, type: select, use: [机场3], icon: ''}
+  - {name: 🚀机场 四, type: select, use: [机场4], icon: ''} 
+  - {name: 🚀机场 五, type: select, use: [机场5], icon: ''}
+  - {name: 🚀机场 六, type: select, use: [机场6], icon: ''}
+  - {name: 🚀机场 七, type: select, use: [机场7], icon: ''}
+  - {name: 🚀机场 八, type: select, use: [机场8], icon: ''}
+  - {name: 🚀机场 九, type: select, use: [机场9], icon: ''}
+  - {name: 🚀机场 CM1, type: select, use: [CM1], icon: ''}
+  - {name: 🚀机场 CM2, type: select, use: [CM2], icon: ''}
+  - {name: 🚀机场 CM3, type: select, use: [CM3], icon: ''}
   - {name: 🐟漏网之鱼, type: select, proxies: [♻️自动选择, 🌏️全球联网, DIRECT], include-all-providers: true, icon: ''}
 
 # 订阅规则
