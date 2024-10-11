@@ -1,0 +1,289 @@
+# 锚点 - 节点订阅的参数 [每小时更新一次订阅节点，每 1 分钟一次健康检查]
+NodeParam: &NodeParam {type: http, interval: 3600, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 60}}
+
+# 锚点 - 节点订阅
+proxy-providers: 
+
+  优选1:
+    url: 'https://vless.durl.nyc.mn/zrf'
+    <<: *NodeParam
+    path: './proxy_providers/优选1.yaml'
+    override:
+      additional-prefix: "[Zrf] "
+      
+  优选2:
+    url: 'https://ghostcc.cc/ss.cn/cn.ovg'
+    <<: *NodeParam
+    path: './proxy_providers/优选2.yaml'
+    override:
+      additional-prefix: "[Ghost] "
+
+  优选3:
+    url: 'https://url.happyhour.lol/Happyhour'
+    <<: *NodeParam
+    path: './proxy_providers/优选3.yaml'
+    override:
+      additional-prefix: "[Happy] "
+
+  优选4:
+    url: 'https://trojans.trevely.us.kg/Trevely'
+    <<: *NodeParam
+    path: './proxy_providers/优选4.yaml'
+    override:
+      additional-prefix: "[Trevely] "
+
+  机场1:
+    url: 'https://mxlsub.me/free'
+    <<: *NodeParam
+    path: './proxy_providers/机场1.yaml'
+    override:
+      additional-prefix: "[Mxl] "
+
+  机场2:
+    url: 'https://clash.llleman.com/clach.yml'
+    <<: *NodeParam
+    path: './proxy_providers/机场2.yaml'
+    override:
+      additional-prefix: "[llleman] "
+
+  机场3:
+    url: 'https://ghp.ci/raw.githubusercontent.com/go4sharing/sub/main/sub.yaml'
+    <<: *NodeParam
+    path: './proxy_providers/机场3.yaml'
+    override:
+      additional-prefix: "[Go4] "
+      
+  机场4:
+    url: 'https://chromego-sub.netlify.app/sub/merged_proxies_new.yaml'
+    <<: *NodeParam
+    path: './proxy_providers/机场4.yaml'
+    override:
+      additional-prefix: "[Chromego] "
+
+  机场5:
+    url: 'https://ghp.ci/raw.githubusercontent.com/Ruk1ng001/freeSub/main/clash.yaml'
+    <<: *NodeParam
+    path: './proxy_providers/机场5.yaml'
+    override:
+      additional-prefix: "[Ruk] "
+
+  机场6:
+    url: 'https://ghp.ci/raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml'
+    <<: *NodeParam
+    path: './proxy_providers/机场6.yaml'
+    override:
+      additional-prefix: "[Peasoft] "
+
+  机场7:
+    url: 'https://ghp.ci/raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.yml'
+    <<: *NodeParam
+    path: './proxy_providers/机场7.yaml'
+    override:
+      additional-prefix: "[Cgp] "
+
+  机场8:
+    url: 'https://ghp.ci/raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta.yaml'
+    <<: *NodeParam
+    path: './proxy_providers/机场8.yaml'
+    override:
+      additional-prefix: "[Snakem] "
+
+  SG1:
+    url: 'https://moist.996.buzz/vless'
+    <<: *NodeParam
+    path: './proxy_providers/SG1.yaml'
+    override:
+      additional-prefix: "[Happy1] "
+
+  SG2:
+    url: 'https://happy.1949.buzz/vless'
+    <<: *NodeParam
+    path: './proxy_providers/SG2.yaml'
+    override:
+      additional-prefix: "[Happy2] "
+
+  TC1:
+    url: 'https://alvless.comorg.us.kg/TCorg'
+    <<: *NodeParam
+    path: './proxy_providers/TC1.yaml'
+    override:
+      additional-prefix: "[天诚1] "
+
+  TC2:
+    url: 'https://altrojan.filegear-sg.me/TCorg'
+    <<: *NodeParam
+    path: './proxy_providers/TC2.yaml'
+    override:
+      additional-prefix: "[天诚2] "
+
+  CM1:
+    url: 'https://TG.CMLiussss.us.kg/auto'
+    <<: *NodeParam
+    path: './proxy_providers/机场Cm1.yaml'
+    override:
+      additional-prefix: "[CM1] "
+
+  CM2:
+    url: 'https://VMess.fxxk.dedyn.io/auto'
+    <<: *NodeParam
+    path: './proxy_providers/机场Cm2.yaml'
+    override:
+      additional-prefix: "[CM2] "
+
+  日嫖:
+    url: 'https://ghp.ci/raw.githubusercontent.com/ripaojiedian/freenode/main/clash'
+    <<: *NodeParam
+    path: './proxy_providers/日嫖.yaml'
+    override:
+      additional-prefix: "[日嫖] "
+
+  白嫖:
+    url: 'https://sub.tgzdyz2.xyz/sub'
+    <<: *NodeParam
+    path: './proxy_providers/白嫖.yaml'
+    override:
+      additional-prefix: "[白嫖] "
+
+  King:
+    url: 'https://king361.fxxk.dedyn.io/auto'
+    <<: *NodeParam
+    path: './proxy_providers/King.yaml'
+    override:
+      additional-prefix: "[King] "
+
+  Vxiaov:
+    url: 'https://ghp.ci/raw.githubusercontent.com/vxiaov/free_proxies/main/clash/clash.provider.yaml'
+    <<: *NodeParam
+    path: './proxy_providers/Vxiaov.yaml'
+    override:
+      additional-prefix: "[Vxiaov] "
+
+ipv6: true
+allow-lan: true
+mixed-port: 7890
+external-controller: 127.0.0.1:9090
+profile:
+  store-selected: true
+  store-fake-ip: true
+dns:
+  enable: true
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 28.0.0.1/8
+  fake-ip-filter:
+    - "*"
+    - "+.lan"
+    - "+.local"
+  default-nameserver:
+    - 223.5.5.5
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+
+# 策略组参数锚点
+# 锚点 - 时延优选参数 [每 1 分钟一次惰性健康检查，容差 20ms，时延超过 2 秒判定为失败，失败 3 次则自动触发健康检查]
+UrlTest: &UrlTest {type: url-test, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true, include-all-providers: true}
+
+# 锚点 - 故障转移参数 [每 1分钟一次惰性健康检查，时延超过 2 秒判定为失败，失败 3 次则自动触发健康检查]
+FallBack: &FallBack {type: fallback, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true, include-all-providers: true}
+
+# 锚点 - 负载均衡参数 [每 1 分钟一次惰性健康检查，时延超过 2 秒判定为失败，失败 3 次则自动触发健康检查]
+LoadBalance: &LoadBalance {type: load-balance, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true, include-all-providers: true}
+
+CsTest: &CsTest {type: select, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: false}
+
+# 锚点 - 规则参数 [每小时更新一次订阅规则，更新规则时使用直连策略]
+RuleProviders: &RuleProviders {type: http, behavior: classical, interval: 3600, format: yaml, proxy: DIRECT}
+
+# 策略组
+proxy-groups: 
+  - {name: 🚀选择节点, type: select, proxies: [♻️自动选择, 🚀手动选择, ♻️负载均衡, 🚀优选机场, 🚀聚合机场, 🚀备用机场, 🚀机场 一, 🚀机场 二, 🚀机场 三, 🚀机场 四, 🚀机场 五, 🚀机场 六, 🚀机场 七, 🚀机场 八]}
+  - {name: 🚀手动选择, <<: *CsTest, include-all-providers: true}
+  - {name: ♻️负载均衡, <<: *LoadBalance}
+  - {name: ♻️自动选择, <<: *UrlTest}
+  - {name: 🚀优选机场, <<: *CsTest, use: [优选1, 优选2, 优选3, 优选4]}
+  - {name: 🚀备用机场, <<: *CsTest, use: [白嫖, 日嫖, King, Vxiaov]}
+  - {name: 🚀聚合机场, <<: *CsTest, use: [TC1, TC2, CM1, CM2, SG1, SG2]}
+  - {name: 🚀机场 一, <<: *CsTest, use: [机场1]}
+  - {name: 🚀机场 二, <<: *CsTest, use: [机场2]}
+  - {name: 🚀机场 三, <<: *CsTest, use: [机场3]}
+  - {name: 🚀机场 四, <<: *CsTest, use: [机场4]} 
+  - {name: 🚀机场 五, <<: *CsTest, use: [机场5]}
+  - {name: 🚀机场 六, <<: *CsTest, use: [机场6]}
+  - {name: 🚀机场 七, <<: *CsTest, use: [机场7]}
+  - {name: 🚀机场 八, <<: *CsTest, use: [机场8]}
+
+
+# 订阅规则
+rule-providers:
+  Lan:
+    <<: *RuleProviders
+    path: './rules/Lan.yaml'
+    url: 'https://gitlab.com/lodepuly/proxy_tool_resources/-/raw/master/rule/Clash/Lan/Lan.yaml'
+
+  Direct:
+    <<: *RuleProviders
+    path: './rules/Direct.yaml'
+    url: 'https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Clash/Rule/Direct.yaml'
+
+  Proxy:
+    <<: *RuleProviders
+    path: './rules/Proxy.yaml'
+    url: 'https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Clash/Rule/Proxy.yaml'
+
+  TikTok:
+    <<: *RuleProviders
+    path: './rules/TikTok.yaml'
+    url: 'https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Clash/Rule/TikTok.yaml'
+
+  DouYin:
+    <<: *RuleProviders
+    path: './rules/DouYin.list'
+    url: 'https://whatshub.top/rule/DouYin.list'
+
+  WeChat:
+    <<: *RuleProviders
+    path: './rules/WeChat.yaml'
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/WeChat/WeChat.yaml'
+    
+  banad:
+    <<: *RuleProviders
+    path: './rules/BanAD.yaml'
+    url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Providers/BanAD.yaml'
+    
+  BanProgramAD:
+    <<: *RuleProviders
+    path: './rules/BanProgramAD.yaml'
+    url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Providers/BanProgramAD.yaml'
+ 
+  BanEasyList:
+    <<: *RuleProviders
+    path: './rules/BanEasyList.yaml'
+    url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Providers/BanEasyList.yaml'
+    
+  ProxyLite:
+    <<: *RuleProviders
+    path: './rules/ProxyLite.yaml'
+    url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Providers/ProxyLite.yaml'
+    
+  ProxyGFWlist:
+    <<: *RuleProviders
+    path: './rules/ProxyGFWlist.yaml'
+    url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Providers/ProxyGFWlist.yaml'
+
+
+# 规则指向
+rules:
+  - RULE-SET, WeChat, DIRECT
+  - RULE-SET, DouYin, DIRECT
+  - RULE-SET, Lan, DIRECT
+  - RULE-SET, Direct, DIRECT
+  - RULE-SET, banad,REJECT
+  - RULE-SET, BanEasyList,REJECT
+  - RULE-SET, BanProgramAD,REJECT
+  - RULE-SET, ProxyLite, 🚀手动选择
+  - RULE-SET, ProxyGFWlist, 🚀手动选择
+  - RULE-SET, Proxy, 🚀手动选择
+  - GEOSITE, cn, DIRECT
+  - GEOIP, CN, DIRECT
+  - MATCH, 🚀选择节点
