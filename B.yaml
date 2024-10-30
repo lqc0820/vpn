@@ -1,0 +1,520 @@
+# 更新时间  2024年10月14日9点9分
+
+# 锚点 - 节点订阅的参数 [每小时更新一次订阅节点，每 1 分钟一次健康检查]
+NodeParam: &NodeParam {type: http, interval: 3600, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 60}}
+
+# 锚点 - 节点订阅
+proxy-providers: 
+
+  订阅A:
+    url: 'https://vless.durl.nyc.mn/zrf'
+    <<: *NodeParam
+    path: './proxy_providers/订阅A.yaml'
+    override:
+      additional-prefix: "[A] "
+      
+  订阅B:
+    url: 'https://cfvmess.cacoman.us.kg/auto'
+    <<: *NodeParam
+    path: './proxy_providers/订阅B.yaml'
+    override:
+      additional-prefix: "[B] "
+
+  订阅C:
+    url: 'https://trojans.trevely.us.kg/Trevely'
+    <<: *NodeParam
+    path: './proxy_providers/订阅C.yaml'
+    override:
+      additional-prefix: "[C] "
+
+  订阅D:
+    url: 'https://ghp.ci/raw.githubusercontent.com/qjlxg/aggregator/main/data/clash.yaml'
+    <<: *NodeParam
+    path: './proxy_providers/订DE.yaml'
+    override:
+      additional-prefix: "[D] "
+
+  订阅E:
+    url: 'https://ghp.ci/raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta.yaml'
+    <<: *NodeParam
+    path: './proxy_providers/订阅E.yaml'
+    override:
+      additional-prefix: "[E] "
+
+  订阅F:
+    url: 'https://sub.tgzdyz2.xyz/sub'
+    <<: *NodeParam
+    path: './proxy_providers/订阅F.yaml'
+    override:
+      additional-prefix: "[F] "
+
+  订阅G:
+    url: 'https://ghp.ci/raw.githubusercontent.com/go4sharing/sub/main/sub.yaml'
+    <<: *NodeParam
+    path: './proxy_providers/订阅G.yaml'
+    override:
+      additional-prefix: "[G] "
+
+  订阅H:
+    url: 'https://chromego-sub.netlify.app/sub/merged_proxies_new.yaml'
+    <<: *NodeParam
+    path: './proxy_providers/订阅H.yaml'
+    override:
+      additional-prefix: "[H] "
+
+  订阅I:
+    url: 'https://ghp.ci/raw.githubusercontent.com/Ruk1ng001/freeSub/main/clash.yaml'
+    <<: *NodeParam
+    path: './proxy_providers/订阅I.yaml'
+    override:
+      additional-prefix: "[I] "
+
+  订阅J:
+    url: 'https://chromego-sub.netlify.app/sub/merged_proxies_new.yaml'
+    <<: *NodeParam
+    path: './proxy_providers/订阅J.yaml'
+    override:
+      additional-prefix: "[J] "
+
+  订阅K:
+    url: 'https://mxlsub.me/newfull'
+    <<: *NodeParam
+    path: './proxy_providers/订阅K.yaml'
+    override:
+      additional-prefix: "[K] "
+
+  订阅L:
+    url: 'https://ghp.ci/https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml'
+    <<: *NodeParam
+    path: './proxy_providers/订阅L.yaml'
+    override:
+      additional-prefix: "[L] "
+
+  订阅M:
+    url: 'https://clash.llleman.com/clach.yml'
+    <<: *NodeParam
+    path: './proxy_providers/订阅M.yaml'
+    override:
+      additional-prefix: "[M] "
+
+  订阅N:
+    url: 'https://gist-collect.fqzs.workers.dev/clach.yml'
+    <<: *NodeParam
+    path: './proxy_providers/订阅N.yaml'
+    override:
+      additional-prefix: "[N] "
+
+  HP1:
+    url: 'https://ovo.o00o.ooo/ooo'
+    <<: *NodeParam
+    path: './proxy_providers/HP1.yaml'
+    override:
+      additional-prefix: "[HP1] "
+
+  HP2:
+    url: 'https://owo.o00o.ooo/ooo'
+    <<: *NodeParam
+    path: './proxy_providers/HP2.yaml'
+    override:
+      additional-prefix: "[HP2] "
+
+  TC1:
+    url: 'https://alvless.comorg.us.kg/TCorg'
+    <<: *NodeParam
+    path: './proxy_providers/TC1.yaml'
+    override:
+      additional-prefix: "[天诚1] "
+
+  TC2:
+    url: 'https://altrojan.filegear-sg.me/TCorg'
+    <<: *NodeParam
+    path: './proxy_providers/TC2.yaml'
+    override:
+      additional-prefix: "[天诚2] "
+
+  CM1:
+    url: 'https://vless.fxxk.dedyn.io/auto'
+    <<: *NodeParam
+    path: './proxy_providers/Cm1.yaml'
+    override:
+      additional-prefix: "[CM1] "
+
+  CM2:
+    url: 'https://VMess.fxxk.dedyn.io/auto'
+    <<: *NodeParam
+    path: './proxy_providers/Cm2.yaml'
+    override:
+      additional-prefix: "[CM2] "
+
+  日嫖:
+    url: 'https://ghp.ci/raw.githubusercontent.com/ripaojiedian/freenode/main/clash'
+    <<: *NodeParam
+    path: './proxy_providers/日嫖.yaml'
+    override:
+      additional-prefix: "[日嫖] "
+
+  Vxiaov:
+    url: 'https://ghp.ci/raw.githubusercontent.com/vxiaov/free_proxies/main/clash/clash.provider.yaml'
+    <<: *NodeParam
+    path: './proxy_providers/Vxiaov.yaml'
+    override:
+      additional-prefix: "[Vxiaov] "
+
+
+# 全局配置
+mixed-port: 7890
+ipv6: false
+allow-lan: true
+unified-delay: true
+tcp-concurrent: true
+external-controller: 0.0.0.0:9090
+
+# 策略组参数锚点
+# 锚点 - 时延优选参数 [每 1 分钟一次惰性健康检查，容差 20ms，时延超过 2 秒判定为失败，失败 3 次则自动触发健康检查]
+c: &c {interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204'}
+
+# 锚点 - 节点筛选组
+FilterHK: &FilterHK '^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterTW: &FilterTW '^(?=.*((?i)🇹🇼|台湾|(\b(TW|Tai|Taiwan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterJP: &FilterJP '^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterKR: &FilterKR '^(?=.*((?i)🇰🇷|韩国|韓|首尔|(\b(KR|Korea)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterSG: &FilterSG '^(?=.*((?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterUS: &FilterUS '^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterUK: &FilterUK '^(?=.*((?i)🇬🇧|英国|伦敦|(\b(UK|United Kingdom)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterFR: &FilterFR '^(?=.*((?i)🇫🇷|法国|(\b(FR|France)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterDE: &FilterDE '^(?=.*((?i)🇩🇪|德国|(\b(DE|Germany)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterGame: &FilterGame '^(?=.*((?i)游戏|🎮|(\b(GAME)\b)))(?!.*((?i)回国|校园)).*$'
+FilterAll: &FilterAll '^(?=.*(.))(?!.*((?i)群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|(\b(USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)\b|(\d{4}-\d{2}-\d{2}|\d+G)))).*$'
+
+
+# 策略组
+proxy-groups: 
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+    - 🌏️ 全球代理
+    - 🚀 均横负载
+    - 🇭🇰 香港节点
+    - 🇹🇼 台湾节点
+    - 🇯🇵 日本节点
+    - 🇰🇷 韩国节点
+    - 🇸🇬 狮城节点
+    - 🇺🇸 美国节点
+    - 🚀 订阅  A
+    - 🚀 订阅  B
+    - 🚀 订阅  C
+    - 🚀 订阅  D
+    - 🚀 订阅  E
+    - 🚀 订阅  F
+    - 🚀 订阅  G
+    - 🚀 订阅  H
+    - 🚀 订阅  I
+    - 🚀 订阅  J
+    - 🚀 订阅  K
+    - 🚀 订阅  L
+    - 🚀 订阅  M
+    - 🚀 订阅  N
+    - 🚀 订阅  O
+    - 🚀 订阅  Q
+    - 🚀 订阅  R
+
+
+  - name: 🌏️ 全球代理
+    include-all: true
+    type: select
+    <<: *c
+    proxies: [♻️ 自动选择]
+
+  - name: 🚀 均横负载
+    type: load-balance
+    include-all: true
+    hidden: true
+    <<: *c
+
+  - name: ♻️ 自动选择
+    include-all: true
+    type: url-test
+    hidden: true
+    <<: *c
+
+  - name: 🇭🇰 香港节点
+    type: select
+    include-all: true
+    <<: *c
+    filter: *FilterHK
+    proxies: [🇭🇰 香港自动]
+
+  - name: 🇭🇰 香港自动
+    type: url-test
+    hidden: true
+    include-all: true
+    <<: *c
+    filter: *FilterHK
+
+
+  - name: 🇹🇼 台湾节点
+    type: select
+    include-all: true
+    <<: *c
+    filter: *FilterTW
+    proxies: [🇹🇼 台湾自动]
+
+  - name: 🇹🇼 台湾自动
+    type: url-test
+    hidden: true
+    include-all: true
+    <<: *c
+    filter: *FilterTW
+
+
+  - name: 🇯🇵 日本节点
+    type: select
+    include-all: true
+    <<: *c
+    filter: *FilterJP
+    proxies: [🇯🇵 日本自动]
+
+  - name: 🇯🇵 日本自动
+    type: url-test
+    hidden: true
+    include-all: true
+    <<: *c
+    filter: *FilterJP
+
+
+  - name: 🇰🇷 韩国节点
+    type: select
+    include-all: true
+    <<: *c
+    filter: *FilterKR
+    proxies: [🇰🇷 韩国自动]
+
+  - name: 🇰🇷 韩国自动
+    type: url-test
+    hidden: true
+    include-all: true
+    <<: *c
+    filter: *FilterKR
+
+
+  - name: 🇸🇬 狮城节点
+    type: select
+    include-all: true
+    <<: *c
+    filter: *FilterSG
+    proxies: [🇸🇬 狮城自动]
+
+  - name: 🇸🇬 狮城自动
+    type: url-test
+    hidden: true
+    include-all: true
+    <<: *c
+    filter: *FilterSG
+
+
+  - name: 🇺🇸 美国节点
+    type: select
+    include-all: true
+    <<: *c
+    filter: *FilterUS
+    proxies: [🇺🇸 美国自动]
+
+  - name: 🇺🇸 美国自动
+    type: url-test
+    hidden: true
+    include-all: true
+    <<: *c
+    filter: *FilterUS
+
+
+  - name: 🚀 订阅  A
+    type: select
+    <<: *c
+    use: [订阅A]
+
+  - name: 🚀 订阅  B
+    type: select
+    <<: *c
+    use: [订阅B]
+
+  - name: 🚀 订阅  C
+    type: select
+    <<: *c
+    use: [订阅C]
+ 
+  - name: 🚀 订阅  D
+    type: select
+    <<: *c
+    use: [订阅D]
+
+  - name: 🚀 订阅  E
+    type: select
+    <<: *c
+    use: [订阅E]
+
+  - name: 🚀 订阅  F
+    type: select
+    <<: *c
+    use: [订阅F]
+
+  - name: 🚀 订阅  G
+    type: select
+    <<: *c
+    use: [订阅G]
+
+  - name: 🚀 订阅  H
+    type: select
+    <<: *c
+    use: [订阅H]
+
+  - name: 🚀 订阅  I
+    type: select
+    <<: *c
+    use: [订阅I]
+
+  - name: 🚀 订阅  J
+    type: select
+    <<: *c
+    use: [订阅J]
+
+  - name: 🚀 订阅  K
+    type: select
+    <<: *c
+    use: [订阅K]
+
+  - name: 🚀 订阅  L
+    type: select
+    <<: *c
+    use: [订阅L]
+
+  - name: 🚀 订阅  M
+    type: select
+    <<: *c
+    use: [订阅M]
+
+  - name: 🚀 订阅  N
+    type: select
+    <<: *c
+    use: [订阅N]
+
+  - name: 🚀 订阅  O
+    type: select
+    <<: *c
+    use: [TC1, TC2]
+
+  - name: 🚀 订阅  P
+    type: select
+    <<: *c
+    use: [HP1, HP2]
+
+  - name: 🚀 订阅  Q
+    type: select
+    <<: *c
+    use: [CM1, CM2]
+
+  - name: 🚀 订阅  R
+    type: select
+    <<: *c
+    use: [日嫖, Vxiaov]
+
+
+
+
+# 锚点 - 规则参数 [每小时更新一次订阅规则，更新规则时使用直连策略]
+RuleProviders: &RuleProviders {interval: 3600, format: yaml, proxy: DIRECT}
+
+# 订阅规则
+rule-providers:
+  ads:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    path: ./ruleset/ads.mrs
+    url: "https://cdn.jsdelivr.net/gh/Project-META/rules-mrs@release/ads.mrs"
+
+  Lan:
+    type: http
+    behavior: classical
+    <<: *RuleProviders
+    path: './rules/Lan.yaml'
+    url: 'https://gitlab.com/lodepuly/proxy_tool_resources/-/raw/master/rule/Clash/Lan/Lan.yaml'
+
+  ProxyLite:
+    type: http
+    behavior: classical
+    <<: *RuleProviders
+    path: './rules/ProxyLite.yaml'
+    url: 'https://ghp.ci/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Providers/ProxyLite.yaml'
+
+  ProxyGFWlist:
+    type: http
+    behavior: classical
+    <<: *RuleProviders
+    path: './rules/ProxyGFWlist.yaml'
+    url: 'https://ghp.ci/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Providers/ProxyGFWlist.yaml'
+
+  collection:
+    type: http
+    behavior: classical
+    <<: *RuleProviders
+    path: './rules/collection.yaml'
+    url: "https://ghp.ci/https://gist.githubusercontent.com/cnfree8964/0864fd1d2e88936a095fb40d74ce4993/raw/collection.yaml"
+
+  gfw:
+    <<: *RuleProviders
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: './ruleset/gfw.yaml'
+
+  proxy:
+    type: http
+    behavior: domain
+    <<: *RuleProviders
+    url: "https://cdn.jsdelivr.net/gh/Project-META/rules-mrs@release/proxy.mrs"
+    path: './ruleset/proxy.yaml'
+
+  tld-not-cn:
+    type: http
+    behavior: domain
+    <<: *RuleProviders
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+    path: './ruleset/tld-not-cn.yaml'
+    interval: 86400
+
+  China: 
+    type: http
+    behavior: classical
+    <<: *RuleProviders
+    path: './rules/China.yaml'
+    url: "https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/China.yaml"
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    <<: *RuleProviders
+    path: './ruleset/cncidr.yaml'
+    url: "https://cdn.jsdelivr.net/gh/Project-META/rules-mrs@release/direct.mrs"
+    
+
+rules:
+
+# 补丁规则
+  - RULE-SET,gfw,🚀 节点选择
+  - RULE-SET,proxy,🚀 节点选择
+  - RULE-SET,ProxyLite,🚀 节点选择
+  - RULE-SET,tld-not-cn,🚀 节点选择
+  - RULE-SET,ProxyGFWlist,🚀 节点选择
+  - RULE-SET,cncidr, DIRECT,no-resolve
+  - RULE-SET,China,DIRECT,no-resolve
+  - RULE-SET,collection,DIRECT,no-resolve
+  - RULE-SET,Lan,DIRECT
+  - RULE-SET,ads,REJECT
+
+# 默认规则
+  - DOMAIN-SUFFIX,local,DIRECT
+  - DOMAIN-SUFFIX,cn,DIRECT
+  - DOMAIN-KEYWORD,-cn,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🚀 节点选择
