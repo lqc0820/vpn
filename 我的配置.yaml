@@ -1,0 +1,230 @@
+# ==================== 锚点配置 ====================
+# 代理提供者模板 - 订阅源基础配置
+BaseProvider: &BaseProvider {type: http, interval: 86400, proxy: DIRECT, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 300}, filter: '^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))'}
+
+c: &c {interval: 200, lazy: true, url: 'https://www.gstatic.com/generate_204'}
+# ==================== 代理提供者 ====================
+proxy-providers:
+  订阅A: {<<: *BaseProvider, url: 'https://igdux.top/~Clash', override: {additional-prefix: '[A] '}}
+
+  订阅B: {<<: *BaseProvider, url: 'https://ghproxy.net/https://raw.githubusercontent.com/suiyuan8/clash/refs/heads/main/SG_112vl', override: {additional-prefix: '[B] '}}
+
+  订阅C: {<<: *BaseProvider, url: 'https://ghproxy.net/https://raw.githubusercontent.com/suiyuan8/clash/refs/heads/main/SG_256vl', override: {additional-prefix: '[C] '}}
+
+  订阅D: {<<: *BaseProvider, url: 'https://ghproxy.net/https://raw.githubusercontent.com/suiyuan8/clash/refs/heads/main/US_331tj', override: {additional-prefix: '[D] '}}
+
+  订阅E: {<<: *BaseProvider, url: 'https://ghproxy.net/https://raw.githubusercontent.com/suiyuan8/clash/refs/heads/main/VN_163ss', override: {additional-prefix: '[E] '}}
+
+  订阅F: {<<: *BaseProvider, url: 'https://ghproxy.net/https://raw.githubusercontent.com/suiyuan8/clash/refs/heads/main/US_331vl', override: {additional-prefix: '[F] '}}
+
+
+
+# ==================== 核心配置 ====================
+# 基础配置
+mode: rule
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7895
+ipv6: true
+allow-lan: true
+unified-delay: true
+tcp-concurrent: true
+log-level: warning
+bind-address: '*'
+find-process-mode: 'always'
+global-client-fingerprint: chrome
+keep-alive-interval: 15
+keep-alive-idle: 600
+
+# 认证配置
+authentication:
+  - mihomo:liu
+skip-auth-prefixes:
+  - 192.168.1.0/24
+  - 192.168.31.0/24
+  - 192.168.100.0/24
+  - 127.0.0.1/8
+
+# 实验性功能
+experimental:
+  quic-go-disable-gso: true  
+     
+# 管理面板配置
+external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip
+external-ui-name: zashboard
+external-ui: ui
+external-controller: 0.0.0.0:9090
+secret: yyds666
+
+# 配置存储
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+# 流量嗅探
+sniffer:
+  enable: true
+  override-destination: false
+  force-dns-mapping: true
+  parse-pure-ip: true
+
+# TUN模式配置
+tun:
+  enable: true
+  stack: mixed
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+    
+# DNS配置
+dns:
+  enable: true
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+    - 119.29.29.29
+    - 180.184.1.1
+    - 223.5.5.5
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  fake-ip-filter:
+    - rule-set:ConnCheck
+    - rule-set:Private
+    - rule-set:China
+    - +.miwifi.com
+    - +.docker.io
+    - +.market.xiaomi.com
+    - +.push.apple.com
+
+# ==================== 代理策略组 ====================
+proxy-groups: 
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+    - 🌏️ 全球代理
+    - 🚀 均横负载
+    - 🚀 订阅  A
+    - 🚀 订阅  B
+    - 🚀 订阅  C
+    - 🚀 订阅  D
+    - 🚀 订阅  E
+    - 🚀 订阅  F
+
+
+
+  - name: 🌏️ 全球代理
+    include-all: true
+    type: select
+    <<: *c
+    proxies: [♻️ 自动选择]
+
+  - name: 🚀 均横负载
+    type: load-balance
+    include-all: true
+    hidden: true
+    <<: *c
+
+  - name: ♻️ 自动选择
+    include-all: true
+    type: url-test
+    hidden: true
+    <<: *c
+
+  - name: 🚀 订阅  A
+    type: select
+    <<: *c
+    use: [订阅A]
+
+  - name: 🚀 订阅  B
+    type: select
+    <<: *c
+    use: [订阅B]
+
+  - name: 🚀 订阅  C
+    type: select
+    <<: *c
+    use: [订阅C]
+ 
+  - name: 🚀 订阅  D
+    type: select
+    <<: *c
+    use: [订阅D]
+
+  - name: 🚀 订阅  E
+    type: select
+    <<: *c
+    use: [订阅E]
+
+  - name: 🚀 订阅  F
+    type: select
+    <<: *c
+    use: [订阅F]
+
+  
+# ==================== 规则路由 ====================
+rules: 
+  # 域名规则
+  - RULE-SET,ConnCheck,DIRECT
+  - RULE-SET,Private,DIRECT
+  - RULE-SET,Direct,DIRECT
+  - RULE-SET,AppleCN,DIRECT
+  - RULE-SET,Download,DIRECT
+  - RULE-SET,XPTV,DIRECT
+  - RULE-SET,SocialMedia,🚀 节点选择
+  - RULE-SET,Disney,🚀 节点选择
+  - RULE-SET,HBO,🚀 节点选择
+  - RULE-SET,Proxy,🚀 节点选择
+  - RULE-SET,China,DIRECT
+  # IP规则
+  - RULE-SET,PrivateIP,DIRECT,no-resolve
+  - RULE-SET,SocialMediaIP,🚀 节点选择,no-resolve
+  - RULE-SET,ProxyIP,🚀 节点选择,no-resolve
+  - RULE-SET,ChinaIP,DIRECT,no-resolve
+  # 兜底规则
+  - MATCH,🚀 节点选择
+
+# ==================== 规则集 ====================
+# 规则集行为模板
+BehaviorDN: &BehaviorDN {type: http, behavior: domain, format: mrs, interval: 86400}
+
+BehaviorIP: &BehaviorIP {type: http, behavior: ipcidr, format: mrs, interval: 86400}
+
+rule-providers: 
+  ConnCheck:      {<<: *BehaviorDN, url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/ConnCheck.mrs}
+  
+  Private:        {<<: *BehaviorDN, url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Private.mrs}
+  
+  Direct:         {<<: *BehaviorDN, url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Direct.mrs}
+  
+  AppleCN:        {<<: *BehaviorDN, url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/AppleCN.mrs}
+  
+  Download:       {<<: *BehaviorDN, url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Download.mrs}
+  
+  XPTV:           {<<: *BehaviorDN, url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/XPTV.mrs}
+  
+  SocialMedia:    {<<: *BehaviorDN, url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/SocialMedia.mrs}
+  
+  Disney:         {<<: *BehaviorDN, url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Disney.mrs}
+  
+  HBO:            {<<: *BehaviorDN, url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/HBO.mrs}
+  
+  Proxy:          {<<: *BehaviorDN, url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Proxy.mrs}
+  
+  China:          {<<: *BehaviorDN, url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/China.mrs}
+
+  # IP规则
+  SocialMediaIP:  {<<: *BehaviorIP, url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/SocialMedia.mrs}
+  
+  ProxyIP:        {<<: *BehaviorIP, url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Proxy.mrs}
+  
+  ChinaIP:        {<<: *BehaviorIP, url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/China.mrs}
+  
+  PrivateIP:      {<<: *BehaviorIP, url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Private.mrs}
+  # ==================== EOF ====================
